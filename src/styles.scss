@@ -1,1 +1,68 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --black-01: #35383f;
+  --black-02: #2c2c2c;
+
+
+
+
+  // $accent-01: #f83369;
+  // $accent-02: rgba($accent-01, 0.79);
+  // $accent-03: rgba($accent-01, 0.16);
+  // $accent-04: desaturate(darken($accent-01, 12%), 30%);
+
+  // Assign them to CSS variables
+
+  // --accent-02: #{$accent-02};
+  // --accent-03: #{$accent-03};
+  // --accent-04: #{$accent-04};
+  --base-h: 344;
+  --base-s: 93%;
+  --base-l: 59%;
+
+  --base: var(--base-h), var(--base-s), var(--base-l);
+  --accent-01: hsl(var(--base));
+  // --accent-02: color-mix(in srgb, var(--accent-01) 80%, white);  /* Lighter */
+  // --accent-03: color-mix(in srgb, var(--accent-01) 20%, white);
+  // --accent-04: color-mix(in srgb, var(--accent-01) 70%, black);
+  --accent-02: hsla(var(--base), 0.79);
+  --accent-03: hsla(var(--base), 0.16);
+  --accent-04: hsl(var(--base-h), calc(var(--base-s) * 0.69), calc(var(--base-l) * 0.78))
+
+  // --accent-02: #f83369c9;
+  // --accent-03: #f8336828;
+  // --accent-04: #c22a53;
+
+
+  --success-01: #00b947;
+  --error-01: #db000b;
+  --white-01: #ffffff;
+  --white-02: #FCFCFD;
+  --white-03: #d0d7e9;
+  --grey-01: #bcbbc2;
+}
+
+html,
+body {
+  height: 100vh;
+  text-decoration: none;
+  font-family:
+    Roboto Slab,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
+    Noto Color Emoji;
+  font-weight: 400;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--white-02);
+}

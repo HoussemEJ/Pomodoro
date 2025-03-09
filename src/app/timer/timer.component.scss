@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css?family=Lekton');
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  color: var(--accent-01);
+  padding: 1rem 3rem;
+
+  .action {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 400;
+      white-space: nowrap;
+
+      &.bold {
+        font-weight: 800;
+      }
+    }
+  }
+
+  /* Clock face with your original box-shadow (no border) */
+  .clock {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    position: relative;
+    margin-top: 1rem;
+    box-shadow:
+      20px 20px 40px rgba(80, 60, 120, 0.2),
+      /* Soft, deep dark outer shadow */ -20px -20px 40px rgba(255, 255, 255, 1),
+      /* Strong, bright light outer shadow */ inset 4px 4px 8px
+        rgba(80, 60, 120, 0.1),
+      /* Softer dark inner shadow */ inset -4px -4px 8px
+        rgba(255, 255, 255, 0.5);
+    border: 5px solid var(--white-02);
+    border-radius: 50%;
+
+    .pie-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99; // overlays the clock face
+    }
+  }
+
+  .analog-clock {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .numbers {
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-01);
+    border-radius: 50%;
+    z-index: 100;
+  }
+
+  /* Each .number rotates around bottom center as well */
+  .number {
+    position: absolute;
+    transform-origin: bottom center;
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+    color: var(--black-01);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Clock Hands */
+  .dial {
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform-origin: bottom center;
+    background: var(--black-01);
+    z-index: 99;
+  }
+
+  .dial::before {
+    content: '';
+    position: absolute;
+    bottom: -20px; /* adjust this value for more/less overshoot */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 20px; /* adjust this value to control the extension’s thickness */
+    background: inherit; /* uses the same background as the dial */
+    border-radius: inherit;
+  }
+
+  .hour {
+    width: 4px;
+    height: 70px;
+    border-radius: 4px;
+  }
+
+  .hour::before {
+    bottom: -15px;
+  }
+
+  .minute {
+    width: 3px;
+    height: 125px;
+    border-radius: 3px;
+  }
+
+  .second {
+    width: 2px;
+    height: 140px;
+    border-radius: 2px;
+    background: var(--accent-01);
+  }
+
+  .timer-display {
+    font-size: 2rem;
+    font-weight: 500;
+    font-family: 'Lekton';
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--accent-01);
+    margin: 0;
+  }
+
+  .fa-circle {
+    font-size: 0.25rem;
+  }
+}
+
+.control {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    height: 70px;
+    width: 70px;
+    color: var(--white-01);
+    background-color: var(--accent-01);
+    transition: 0.2s ease-in;
+    box-shadow:
+      0px 10px 20px rgba(0, 0, 0, 0.1),
+      0px 4px 6px rgba(0, 0, 0, 0.05);
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+
+    &:hover {
+      // Optional hover effects
+    }
+
+    &.small {
+      transform: scale(0.75);
+      color: var(--white-01);
+      background-color: var(--grey-01);
+    }
+  }
+}

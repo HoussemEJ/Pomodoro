@@ -1,0 +1,53 @@
+<div class="notepad">
+  <div cdkDropList class="task-list" (cdkDropListDropped)="drop($event)">
+    @for (task of tasks(); track task) {
+      <div class="task" cdkDrag>
+        <div class="custom-placeholder" *cdkDragPlaceholder></div>
+        <div class="front">
+          <i
+            class="fa"
+            [ngClass]="{
+              'fa-square': !task.completed,
+              'fa-square-check': task.completed,
+            }"
+            (click)="toggleTask(task); $event.stopPropagation()"
+          >
+          </i>
+          @if (editingTask() !== task) {
+            <span [ngClass]="{ completed: task.completed }">
+              {{ task.text }}
+            </span>
+          } @else {
+            <input
+              #editInput
+              class="edit"
+              type="text"
+              [value]="editedText()"
+              (input)="updateEditedText($event)"
+              (blur)="finishEditing(task)"
+              (keydown.enter)="finishEditing(task, $event)"
+              appAutofocus
+            />
+          }
+        </div>
+        <div class="back">
+          <i class="fa-solid fa-pen" (click)="startEditing(task)"></i>
+          <i
+            class="fa-solid fa-trash"
+            (click)="deleteTask(task); $event.stopPropagation()"
+          ></i>
+        </div>
+        @if (activeNoteMenu === task) {
+          <div class="noteMenu" (click)="stopPropagation($event)"></div>
+        }
+      </div>
+    }
+    <input
+      type="text"
+      placeholder="Type something..."
+      [value]="newTask()"
+      (input)="updateTask($event)"
+      (keydown.enter)="addTask($event)"
+    />
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="timer">
+    <div class="action">
+      <h3 [class.bold]="mode === Mode.pomodoro">Pomodoro</h3>
+      <h3 [class.bold]="mode === Mode.shortbreak">Short Break</h3>
+      <h3 [class.bold]="mode === Mode.longbreak">Long Break</h3>
+    </div>
+
+    <div class="clock">
+      @if (targetEndTime()) {
+        <div class="pie-overlay" [ngStyle]="{ background: pieSlice() }"></div>
+      }
+      <div class="analog-clock">
+        <div class="numbers">
+          @for (n of numbers; track n) {
+            <div class="number" [ngStyle]="getNumberStyle(n)">
+              @if (n === 0) {
+                12
+              } @else if (n === 3 || n === 6 || n === 9) {
+                {{ n }}
+              } @else {
+                <i class="fa-solid fa-circle"></i>
+              }
+            </div>
+          }
+        </div>
+
+        <!-- Clock Hands -->
+        <div
+          class="dial hour"
+          [style.transform]="
+            'translateX(-50%) rotate(' + hourDegrees() + 'deg)'
+          "
+        ></div>
+        <div
+          class="dial minute"
+          [style.transform]="
+            'translateX(-50%) rotate(' + minuteDegrees() + 'deg)'
+          "
+        ></div>
+        <div
+          class="dial second"
+          [style.transform]="
+            'translateX(-50%) rotate(' + secondDegrees() + 'deg)'
+          "
+        ></div>
+      </div>
+    </div>
+
+    <div class="timer-display">
+      {{ timeString() }}
+    </div>
+
+    <div class="control">
+      <div class="btn small" (click)="reset()">
+        <i class="fa-solid fa-rotate-left"></i>
+      </div>
+      <div class="btn" (click)="togglePlayPause()">
+        <i
+          class="fa-solid fa-fw"
+          [class.fa-play]="!play"
+          [class.fa-pause]="play"
+        ></i>
+      </div>
+      <div class="btn small" (click)="fastForward()">
+        <i class="fa-solid fa-forward-step"></i>
+      </div>
+    </div>
+  </div>
+</div>

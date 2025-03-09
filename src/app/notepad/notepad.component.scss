@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+.notepad {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+}
+
+.task,
+input {
+  font-size: 1.2rem;
+  padding: 0.75rem 1rem;
+  line-height: 1.5rem; // Ensures consistency in vertical spacing
+}
+
+.task {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  background-color: var(--white-02);
+  cursor: move;
+}
+
+input {
+  font-family: 'Comfortaa';
+  font-weight: 400;
+  border: none;
+  outline: none;
+  max-width: 100%;
+  background: transparent;
+}
+
+.edit {
+  padding: 0;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.task:last-child {
+  border: none;
+}
+
+.task-list.cdk-drop-list-dragging .task:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.custom-placeholder {
+  background-color: var(--accent-01);
+  border: dashed 4px var(--accent-04);
+  border-radius: 4px;
+  min-height: 40px;
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.task i {
+  font-weight: 400;
+  color: var(--accent-01);
+  padding: 0;
+  margin: 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.task span {
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'Comfortaa';
+  font-weight: 500;
+}
+
+.task span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-0%);
+  height: 2px;
+  width: 0;
+  background-color: var(--black-02);
+  transition: width 0.3s ease-in-out;
+}
+
+.task span.completed::after {
+  width: 100%;
+}
+
+.front {
+  overflow: hidden;
+}
+
+.front,
+.back {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.back {
+  gap: 1.5rem;
+
+  .fa-pen {
+    color: var(--black-01);
+  }
+
+  .fa-trash-can {
+    color: var(--accent-01);
+  }
+}
+
+.back i {
+  font-weight: 900;
+  font-size: 1.25rem;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.noteMenu {
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background-color: var(--white-02);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  padding: 1rem;
+  z-index: 99;
+}
+
+@media (max-width: 480px) {
+  .notepad {
+    padding: 1rem 0.5rem;
+  }
+  .task {
+    padding: 0.75rem 0.5rem;
+  }
+}

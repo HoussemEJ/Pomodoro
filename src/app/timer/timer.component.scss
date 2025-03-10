@@ -52,8 +52,16 @@
         rgba(80, 60, 120, 0.1),
       /* Softer dark inner shadow */ inset -4px -4px 8px
         rgba(255, 255, 255, 0.5);
-    border: 5px solid var(--white-02);
+    border: 5px solid var(--white-01);
     border-radius: 50%;
+
+    &.dark {
+      box-shadow:
+      10px 10px 20px rgba(0, 0, 0, 0.6),  /* Soft dark outer shadow */
+      -10px -10px 20px rgba(255, 255, 255, 0.02), /* Subtle light reflection */
+      inset 3px 3px 6px rgba(0, 0, 0, 0.4),  /* Darker inner shadow */
+      inset -3px -3px 6px rgba(255, 255, 255, 0.05); /* Soft highlight */
+    }
 
     .pie-overlay {
       position: absolute;
@@ -78,11 +86,7 @@
     right: 50%;
     bottom: 50%;
     transform: translate(50%, 50%);
-    width: 10px;
-    height: 10px;
-    background-color: var(--accent-01);
-    border-radius: 50%;
-    z-index: 100;
+    z-index: 99;
   }
 
   /* Each .number rotates around bottom center as well */
@@ -118,6 +122,19 @@
     height: 20px; /* adjust this value to control the extension’s thickness */
     background: inherit; /* uses the same background as the dial */
     border-radius: inherit;
+  }
+
+  .center {
+    content: '';
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-01);
+    border-radius: 50%;
+    z-index: 100;
   }
 
   .hour {

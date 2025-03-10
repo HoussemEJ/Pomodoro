@@ -13,17 +13,17 @@ export class SettingsComponent implements OnInit {
   
   settingsOpen = false;
   pomodoros = this.parametersService.pomodoros;
-  darkMode = false;
+  darkMode = this.parametersService.darkMode;
 
   readonly DEFAULT_BASE_H = 344;
   readonly DEFAULT_BASE_S = 93;
   readonly DEFAULT_BASE_L = 59;
 
-  backgroundColor = signal(this.getCssVariable('--white-02'));
+  backgroundColor = signal(this.getCssVariable('--white-01'));
   accentColor = signal(localStorage.getItem('themeColor') || this.getComputedHex());
 
   options = [
-    // { label: 'Background', cssVar: '--white-02', color: this.backgroundColor },
+    // { label: 'Background', cssVar: '--white-01', color: this.backgroundColor },
     { label: 'Color Theme', cssVar: '--accent-01', color: this.accentColor },
   ];
 
@@ -50,6 +50,8 @@ export class SettingsComponent implements OnInit {
       this.accentColor.set(savedColor); // Update signal
       this.applyColor(savedColor); // Apply to CSS variables
     }
+
+    this.applyDarkModeStyles();
   }
 
   applyColor(color: string): void {
@@ -65,7 +67,18 @@ export class SettingsComponent implements OnInit {
   }
 
   toggleDarkMode() {
-    this.darkMode = !this.darkMode;
+    this.parametersService.toggleDarkMode();
+    this.applyDarkModeStyles();
+  }
+
+  applyDarkModeStyles() {
+    if (this.darkMode()) {
+      document.documentElement.style.setProperty('--black-01', '#FCFCFD');
+      document.documentElement.style.setProperty('--white-01', '#1E1E20');
+    } else {
+      document.documentElement.style.setProperty('--black-01', '#1E1E20');
+      document.documentElement.style.setProperty('--white-01', '#FCFCFD');
+    }
   }
 
   updateColor(index: number, event: Event): void {
@@ -180,6 +193,7 @@ export class SettingsComponent implements OnInit {
 
   resetToDefault() {
     this.parametersService.resetParams();
+    this.applyDarkModeStyles();
 
     localStorage.removeItem('themeColor');
     document.documentElement.style.setProperty('--base-h', this.DEFAULT_BASE_H.toString());

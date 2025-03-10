@@ -6,7 +6,7 @@
       <h3 [class.bold]="mode === Mode.longbreak">Long Break</h3>
     </div>
 
-    <div class="clock">
+    <div class="clock" [class.dark]="darkMode()">
       @if (targetEndTime()) {
         <div class="pie-overlay" [ngStyle]="{ background: pieSlice() }"></div>
       }
@@ -24,7 +24,7 @@
             </div>
           }
         </div>
-
+        <div class="center"></div>
         <!-- Clock Hands -->
         <div
           class="dial hour"

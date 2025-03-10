@@ -24,6 +24,8 @@ export class TimerComponent implements OnInit, OnDestroy {
   longBreakTime = this.parametersService.longBreakTime;
   pomodoros = this.parametersService.pomodoros;
 
+  darkMode = this.parametersService.darkMode;
+
   timerValue = signal(this.pomodoroTime());
   
   play: boolean = false;

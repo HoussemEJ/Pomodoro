@@ -10,9 +10,9 @@
       (click)="toggleSettings()"
     ></i>
   </div>
-  <div class="settings" [class.open]="settingsOpen">
+  <div class="settings" [class.open]="settingsOpen" [class.dark]="darkMode()">
     <h1>Settings</h1>
-    <div class="ld" [class.dark]="darkMode" (click)="toggleDarkMode()">
+    <div class="ld" [class.dark]="darkMode()" (click)="toggleDarkMode()">
         <i class="fa-solid fa-circle-half-stroke"></i>
     </div>
     @for (option of options; track $index) {

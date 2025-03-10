@@ -1,10 +1,4 @@
 :root {
-  --black-01: #35383f;
-  --black-02: #2c2c2c;
-
-
-
-
   // $accent-01: #f83369;
   // $accent-02: rgba($accent-01, 0.79);
   // $accent-03: rgba($accent-01, 0.16);
@@ -26,18 +20,17 @@
   // --accent-04: color-mix(in srgb, var(--accent-01) 70%, black);
   --accent-02: hsla(var(--base), 0.79);
   --accent-03: hsla(var(--base), 0.16);
-  --accent-04: hsl(var(--base-h), calc(var(--base-s) * 0.69), calc(var(--base-l) * 0.78))
+  --accent-04: hsl(var(--base-h), calc(var(--base-s) * 0.69), calc(var(--base-l) * 0.78));
 
   // --accent-02: #f83369c9;
   // --accent-03: #f8336828;
   // --accent-04: #c22a53;
 
+  --black-01: #FCFCFD;
+  --white-01: #1E1E20;
 
-  --success-01: #00b947;
-  --error-01: #db000b;
-  --white-01: #ffffff;
-  --white-02: #FCFCFD;
-  --white-03: #d0d7e9;
+  --black-01: #1E1E20;
+  --white-01: #FCFCFD;
   --grey-01: #bcbbc2;
 }
 
@@ -64,5 +57,14 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: var(--white-02);
+  color: var(--black-01);
+  background-color: var(--white-01);
 }
+
+.no-select {
+  user-select: none; /* Standard syntax */
+  -webkit-user-select: none; /* Chrome, Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+}
+

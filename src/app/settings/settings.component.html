@@ -13,7 +13,7 @@
   <div class="settings" [class.open]="settingsOpen" [class.dark]="darkMode()">
     <h1>Settings</h1>
     <div class="ld" [class.dark]="darkMode()" (click)="toggleDarkMode()">
-        <i class="fa-solid fa-circle-half-stroke"></i>
+      <i class="fa-solid" [class.fa-moon]="!darkMode()" [class.fa-sun]="darkMode()"></i>
     </div>
     @for (option of options; track $index) {
       <div class="option">

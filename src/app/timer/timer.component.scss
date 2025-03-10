@@ -33,7 +33,7 @@
       white-space: nowrap;
 
       &.bold {
-        font-weight: 800;
+        font-weight: 700;
       }
     }
   }
@@ -207,6 +207,10 @@
       transform: scale(0.75);
       color: var(--white-01);
       background-color: var(--grey-01);
+
+      &.dark {
+        background-color: #4c4c50;
+      }
     }
   }
 }

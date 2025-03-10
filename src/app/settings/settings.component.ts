@@ -16,7 +16,7 @@ export class SettingsComponent implements OnInit {
   darkMode = this.parametersService.darkMode;
 
   readonly DEFAULT_BASE_H = 344;
-  readonly DEFAULT_BASE_S = 93;
+  readonly DEFAULT_BASE_S = 80;
   readonly DEFAULT_BASE_L = 59;
 
   backgroundColor = signal(this.getCssVariable('--white-01'));

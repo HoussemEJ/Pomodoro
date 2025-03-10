@@ -52,7 +52,7 @@
     </div>
 
     <div class="control">
-      <div class="btn small" (click)="reset()">
+      <div class="btn small" (click)="reset()" [class.dark]="darkMode()">
         <i class="fa-solid fa-rotate-left"></i>
       </div>
       <div class="btn" (click)="togglePlayPause()">
@@ -62,7 +62,7 @@
           [class.fa-pause]="play"
         ></i>
       </div>
-      <div class="btn small" (click)="fastForward()">
+      <div class="btn small" (click)="fastForward()" [class.dark]="darkMode()">
         <i class="fa-solid fa-forward-step"></i>
       </div>
     </div>
